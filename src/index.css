@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@layer base {
+  html {
+    @apply min-h-full text-white/90;
+    background-color: #000000;
+    color-scheme: dark;
+  }
+
+  body {
+    @apply min-h-screen min-h-[100dvh] antialiased;
+    background-color: #000000;
+  }
+
+  #root {
+    min-height: 100%;
+    min-height: 100dvh;
+    background-color: #000000;
+  }
+
+  :where(a, button, input, textarea, select, [tabindex]:not([tabindex='-1'])):focus-visible:not(.skip-link) {
+    @apply outline-none ring-2 ring-offset-2 ring-offset-black;
+    --tw-ring-color: rgb(34 211 238 / 0.5);
+  }
+}
+
+@layer utilities {
+  .app-root {
+    position: relative;
+    z-index: 1;
+  }
+
+  .custom-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(167, 139, 250, 0.35) transparent;
+  }
+  .custom-scroll::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .custom-scroll::-webkit-scrollbar-thumb {
+    @apply rounded-full;
+    background: linear-gradient(180deg, rgba(34, 211, 238, 0.45), rgba(232, 121, 249, 0.45));
+  }
+  .custom-scroll::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 9999px;
+  }
+
+  /* Sleek glass on AMOLED — subtle color in the sheen */
+  .glass {
+    position: relative;
+    background: linear-gradient(
+      165deg,
+      rgba(22, 20, 38, 0.82) 0%,
+      rgba(8, 8, 12, 0.88) 45%,
+      rgba(5, 5, 8, 0.92) 100%
+    );
+    backdrop-filter: blur(22px) saturate(1.35);
+    -webkit-backdrop-filter: blur(22px) saturate(1.35);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.07),
+      0 0 0 1px rgba(167, 139, 250, 0.06),
+      0 12px 48px rgba(0, 0, 0, 0.55),
+      0 0 100px rgba(34, 211, 238, 0.04),
+      0 0 80px rgba(232, 121, 249, 0.03);
+  }
+
+  .glass-subtle {
+    position: relative;
+    background: linear-gradient(135deg, rgba(20, 18, 35, 0.55) 0%, rgba(6, 6, 10, 0.75) 100%);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.05),
+      0 0 24px rgba(34, 211, 238, 0.05);
+  }
+
+  /* Extra spectral glow on hero cards */
+  .glass-vivid {
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.09),
+      0 0 0 1px rgba(167, 139, 250, 0.14),
+      0 12px 48px rgba(0, 0, 0, 0.55),
+      0 0 100px rgba(34, 211, 238, 0.1),
+      0 0 120px rgba(232, 121, 249, 0.08);
+  }
+
+  .text-gradient {
+    background: linear-gradient(
+      90deg,
+      #5eead4,
+      #67e8f9,
+      #a78bfa,
+      #e879f9,
+      #f9a8d4,
+      #5eead4
+    );
+    background-size: 200% auto;
+    animation: gradient-flow 4s linear infinite;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .text-gradient {
+      animation: none;
+      background: linear-gradient(90deg, #67e8f9, #c4b5fd, #f0abfc);
+      background-size: 100% auto;
+    }
+  }
+
+  .text-gradient-subtle {
+    @apply bg-gradient-to-r from-cyan-200/90 via-violet-200/85 to-fuchsia-200/80 bg-clip-text text-transparent;
+  }
+
+  .btn-chrome {
+    background: linear-gradient(135deg, rgba(34, 211, 238, 0.95) 0%, rgba(139, 92, 246, 0.95) 50%, rgba(232, 121, 249, 0.9) 100%);
+    background-size: 200% 200%;
+    animation: gradient-flow 4s ease infinite;
+    box-shadow:
+      0 0 24px rgba(34, 211, 238, 0.35),
+      0 0 48px rgba(167, 139, 250, 0.2),
+      0 4px 20px rgba(0, 0, 0, 0.45);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn-chrome {
+      animation: none;
+      background: linear-gradient(135deg, #22d3ee, #a78bfa);
+    }
+  }
+
+  .inner-glow-cyan {
+    box-shadow: inset 0 0 30px rgba(34, 211, 238, 0.06);
+  }
+}
